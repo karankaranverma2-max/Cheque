@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChequeMaintain | Bank Cheque Management</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>ChequeMaintain</h1>
+      <p>Simple bank cheque record and tracking website</p>
+    </header>
+
+    <main class="layout">
+      <section class="card form-card">
+        <h2>Add Cheque</h2>
+        <form id="chequeForm">
+          <label>
+            Account Holder
+            <input type="text" id="holder" required />
+          </label>
+          <label>
+            Cheque Number
+            <input type="text" id="chequeNumber" required pattern="[0-9]{6,12}" />
+          </label>
+          <label>
+            Bank Name
+            <input type="text" id="bankName" required />
+          </label>
+          <label>
+            Amount (₹)
+            <input type="number" id="amount" min="1" step="0.01" required />
+          </label>
+          <label>
+            Issue Date
+            <input type="date" id="issueDate" required />
+          </label>
+          <label>
+            Status
+            <select id="status" required>
+              <option value="Pending">Pending</option>
+              <option value="Cleared">Cleared</option>
+              <option value="Bounced">Bounced</option>
+            </select>
+          </label>
+          <button type="submit">Save Cheque</button>
+        </form>
+      </section>
+
+      <section class="card table-card">
+        <div class="table-header">
+          <h2>Cheque Register</h2>
+          <input type="search" id="search" placeholder="Search by name, cheque no, bank..." />
+        </div>
+
+        <div class="summary" id="summary"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Holder</th>
+                <th>Cheque No.</th>
+                <th>Bank</th>
+                <th>Amount</th>
+                <th>Issue Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="chequeTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>Built for easy cheque maintenance and monitoring.</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
