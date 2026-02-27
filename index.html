@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Cheque Maintenance</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bank Cheque Maintenance</h1>
+      <p>Track cheque issue, deposit, and clearance records in one place.</p>
+    </header>
+
+    <main>
+      <section class="panel form-panel">
+        <h2>Add / Update Cheque</h2>
+        <form id="cheque-form">
+          <input type="hidden" id="edit-id" />
+
+          <label>
+            Cheque Number
+            <input id="cheque-number" type="text" required placeholder="e.g. CHQ-12045" />
+          </label>
+
+          <label>
+            Account Name
+            <input id="account-name" type="text" required placeholder="e.g. John Doe" />
+          </label>
+
+          <label>
+            Bank Name
+            <input id="bank-name" type="text" required placeholder="e.g. National Bank" />
+          </label>
+
+          <label>
+            Amount
+            <input id="amount" type="number" min="0" step="0.01" required />
+          </label>
+
+          <label>
+            Issue Date
+            <input id="issue-date" type="date" required />
+          </label>
+
+          <label>
+            Status
+            <select id="status" required>
+              <option value="Issued">Issued</option>
+              <option value="Deposited">Deposited</option>
+              <option value="Cleared">Cleared</option>
+              <option value="Bounced">Bounced</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" id="save-btn">Save Cheque</button>
+            <button type="button" id="reset-btn" class="secondary">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel records-panel">
+        <div class="records-header">
+          <h2>Cheque Records</h2>
+          <input id="search" type="search" placeholder="Search by cheque #, account, bank, or status" />
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cheque #</th>
+                <th>Account</th>
+                <th>Bank</th>
+                <th>Amount</th>
+                <th>Issue Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="records-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="row-template">
+      <tr>
+        <td data-field="number"></td>
+        <td data-field="account"></td>
+        <td data-field="bank"></td>
+        <td data-field="amount"></td>
+        <td data-field="issueDate"></td>
+        <td><span data-field="status" class="status-chip"></span></td>
+        <td>
+          <button data-action="edit" class="small">Edit</button>
+          <button data-action="delete" class="small danger">Delete</button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
